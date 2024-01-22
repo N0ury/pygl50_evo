@@ -15,6 +15,8 @@ It is written in Python.
   
 Don't forget to modify the  
 ```
-if (advertisedDevice->haveName() && advertisedDevice->getName() == "Beurer GL50EVO" && advertisedDevice->getAddress().toString() == "ed:ac:3e:ea:54:ff")
+    "ED:AC:3E:EA:54:FF"
+    if platform.system() != "Darwin"
+    else "2ACAC34E-A163-F72E-30B7-963F16F6E7E1"
 ```
 line to suit your situation.  
