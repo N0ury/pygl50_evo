@@ -20,3 +20,6 @@ Don't forget to modify the
     else "2ACAC34E-A163-F72E-30B7-963F16F6E7E1"
 ```
 lines to suit your situation.  
+
+Lines 18 to 25 can be safely removed. 
+I wanted to harmonize the codes with another blood glucose meter.
