@@ -19,4 +19,4 @@ Don't forget to modify the
     if platform.system() != "Darwin"
     else "2ACAC34E-A163-F72E-30B7-963F16F6E7E1"
 ```
-line to suit your situation.  
+lines to suit your situation.  
