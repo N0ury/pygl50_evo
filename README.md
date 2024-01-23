@@ -21,5 +21,5 @@ Don't forget to modify the
 ```
 lines to suit your situation.  
 
-Lines 18 to 25 can be safely removed. 
+Lines 20 to 24 can be safely removed. 
 I wanted to harmonize the codes with another blood glucose meter.
