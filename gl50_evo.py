@@ -3,6 +3,8 @@ import sys
 import bleak
 import platform
 
+global context_follows
+
 def Record_Access_Control_Point_indic_func(handle: int, data: bytearray):
   if data[0] == 6:
       # This is a response code
@@ -15,14 +17,11 @@ def Record_Access_Control_Point_indic_func(handle: int, data: bytearray):
         sys.exit()
 
 def Glucose_Measurement_Context_notif_func(handle: int, data: bytearray):
-  marquage = data[3]
-  if marquage == 1:
-    pass
-  elif marquage == 2:
-    marquage = 3
+  # 4 (Casual), and 5 (Bedtime) => Changed to no context (in bgstar act_events)
+  if data[3] in [4, 5]:
+    print("")
   else:
-    marquage = 16
-  print (f" {marquage :d}")
+    print(f" {data[3] :d}")
 
 def Glucose_Measurement_notif_func(handle: int, data: bytearray):
   year = (data[4] << 8 | data[3])
@@ -33,9 +32,11 @@ def Glucose_Measurement_notif_func(handle: int, data: bytearray):
   measurement = (data[9] << 8 | data[10])
   print(f"{year :4d}-{month :02d}-{day :02d} {hour :02d}:{minute :02d} {measurement :d}"
     , end='')
-  type = data[0] >> 4
-  if (type != 1):
+  if (data[0] >> 4 != 1):
+    context_follows = False
     print("")
+  else:
+    context_follows = True
 
 async def main(address):
   try:
